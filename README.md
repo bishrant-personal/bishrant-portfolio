@@ -35,7 +35,13 @@ One-time: `cd tools && npm install`.
 4. **Commit to main.** Pushing main does not change the live site, which is pinned to a tag.
 5. **Release:** `npm run release` (or `npm run release -- 1.9.0`). It checks, pushes, tags the next
    version, and waits until jsDelivr serves every file byte for byte.
-6. **Point Webflow at the new tag:** change `@<old>` to `@<new>` in the 10 blocks in `webflow-map.json`,
-   update `liveVersion` there, then publish. Rolling back means setting the old version again.
+6. **Point Webflow at the new tag:** the release prints the exact old and new URL prefixes. Replace them
+   in the 10 blocks in `webflow-map.json` and nothing else. Update `liveCdnBase`/`liveVersion` there,
+   then publish. To roll back, set the old prefix again.
 
 Releases use `1.8.1`-style tags. The old `v1.0.x` tags are ignored.
+
+The repo must stay **public**: jsDelivr cannot read private repos (tried 1 Nov 2026, every new tag
+returned 404). It moved from `RoshitShrestha` to `bishrant-personal`. Webflow still loads the old name at
+`1.8.1`, but new tags only resolve under `bishrant-personal`, so the first release switches the prefix.
+`1.8.2` was tagged by mistake while the repo was private and only adds `tools/`.

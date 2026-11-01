@@ -45,7 +45,10 @@ for (let attempt = 1; attempt <= 12; attempt++) {
   const bad = results.filter(Boolean);
   if (!bad.length) {
     console.log(`\nAll ${files.length} files are live on jsDelivr at @${next}.`);
-    console.log(`Next: switch Webflow from @${MAP.liveVersion} to @${next} (10 code blocks, version only), then publish.`);
+    console.log("\nNext, in Webflow (the 10 blocks in tools/webflow-map.json), replace exactly:");
+    console.log(`  ${MAP.liveCdnBase}@${MAP.liveVersion}/`);
+    console.log(`  ${MAP.cdnBase}@${next}/`);
+    console.log(`then set liveCdnBase/liveVersion in webflow-map.json to match, commit, and publish the site.`);
     process.exit(0);
   }
   console.log(`  try ${attempt}: ${bad.length} not ready (${bad[0]})`);

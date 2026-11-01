@@ -2,8 +2,10 @@
   "_about": "Where the live Webflow site (bishrant.com) loads each file of this repo. Read from Webflow on 2026-11-01. A release changes ONLY the version after '@' in these script tags. Nothing else in Webflow custom code is touched.",
   "siteId": "66d46ff703091f83e3abce17",
   "domains": ["bishrant.com", "www.bishrant.com"],
-  "cdnBase": "https://cdn.jsdelivr.net/gh/RoshitShrestha/bishrant-portfolio",
+  "cdnBase": "https://cdn.jsdelivr.net/gh/bishrant-personal/bishrant-portfolio",
+  "liveCdnBase": "https://cdn.jsdelivr.net/gh/RoshitShrestha/bishrant-portfolio",
   "liveVersion": "1.8.1",
+  "_cdnNote": "cdnBase is where releases are published. liveCdnBase is what Webflow loads today. The repo moved from RoshitShrestha to bishrant-personal; jsDelivr does not follow that move for new tags, so the first release switches Webflow to cdnBase.",
   "blocks": [
     { "where": "site footer", "pageId": null, "path": "/", "files": ["transition.js", "specbtn.js", "cursor.js", "pixel-portrait.js"] },
     { "where": "Home footer", "pageId": "66d46ff703091f83e3abce84", "path": "/", "files": ["home-main.js"] },
