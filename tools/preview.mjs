@@ -34,6 +34,16 @@ await context.route(CDN, async (route) => {
 });
 
 if (!smoke) {
+  // A badge so this window is never mistaken for the live site. Only this window gets it.
+  await context.addInitScript(() => {
+    document.addEventListener("DOMContentLoaded", () => {
+      const b = document.createElement("div");
+      b.textContent = "Local preview: scripts from your computer";
+      b.style.cssText = "position:fixed;left:12px;bottom:12px;z-index:2147483647;padding:6px 10px;border-radius:6px;" +
+        "background:#111;color:#fff;font:500 12px/1.2 system-ui,sans-serif;pointer-events:none;opacity:.85";
+      document.body.appendChild(b);
+    });
+  });
   const page = await context.newPage();
   page.on("pageerror", (e) => console.log("ERROR  " + e.message));
   page.on("console", (m) => m.type() === "error" && console.log("console error  " + m.text()));
