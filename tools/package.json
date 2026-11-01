@@ -1,0 +1,16 @@
+{
+  "name": "bishrant-portfolio-tools",
+  "private": true,
+  "type": "module",
+  "description": "Dev-only tools for the portfolio scripts. Not loaded by the site.",
+  "scripts": {
+    "check": "node check.mjs",
+    "preview": "node preview.mjs",
+    "smoke": "node preview.mjs --smoke",
+    "release": "node release.mjs"
+  },
+  "devDependencies": {
+    "acorn": "^8.14.0",
+    "playwright": "1.64.1"
+  }
+}

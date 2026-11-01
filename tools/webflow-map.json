@@ -1,0 +1,23 @@
+{
+  "_about": "Where the live Webflow site (bishrant.com) loads each file of this repo. Read from Webflow on 2026-11-01. A release changes ONLY the version after '@' in these script tags. Nothing else in Webflow custom code is touched.",
+  "siteId": "66d46ff703091f83e3abce17",
+  "domains": ["bishrant.com", "www.bishrant.com"],
+  "cdnBase": "https://cdn.jsdelivr.net/gh/RoshitShrestha/bishrant-portfolio",
+  "liveVersion": "1.8.1",
+  "blocks": [
+    { "where": "site footer", "pageId": null, "path": "/", "files": ["transition.js", "specbtn.js", "cursor.js", "pixel-portrait.js"] },
+    { "where": "Home footer", "pageId": "66d46ff703091f83e3abce84", "path": "/", "files": ["home-main.js"] },
+    { "where": "About footer", "pageId": "698418ec99c4a2cbc8d7359a", "path": "/about", "files": ["about-text.js"] },
+    { "where": "Playground footer", "pageId": "69fde789249b5c8329953a84", "path": "/playground", "files": ["blur-transition-reveal.js"] },
+    { "where": "Soul Story footer", "pageId": "681ed2a70658d583733258a2", "path": "/projects/soul-story", "files": ["case-study-animation.js"] },
+    { "where": "Metro Mates footer", "pageId": "680a4dd1cb14b14741d72e07", "path": "/projects/metro-mates", "files": ["case-study-animation.js", "metro-mates.js"] },
+    { "where": "Websites footer", "pageId": "68066ca9d29e507d5578b9d1", "path": "/projects/websites", "files": ["case-study-animation.js", "websites.js"] },
+    { "where": "Febris footer", "pageId": "6803102388fb813673581ede", "path": "/projects/febris", "files": ["case-study-animation.js"] },
+    { "where": "NIC Asia footer", "pageId": "67f48b4fec064ef3e6303739", "path": "/projects/nic-asia", "files": ["case-study-animation.js"] },
+    { "where": "Ncell footer", "pageId": "67f09958529f02b73d4faca1", "path": "/projects/ncell", "files": ["case-study-animation.js", "ncell-gradient.js"] }
+  ],
+  "pinnedElsewhere": [
+    { "file": "home/disc.js", "loads": "empty_warehouse.ktx2", "version": "1.6.3", "note": "Hard-coded asset URL inside the code. Leave it unless the texture itself changes." }
+  ],
+  "pageGlobals": "GSAP, ScrollTrigger, SplitText and jQuery come from Webflow as globals. three is resolved by the importmap in the Home and Ncell head code (three@0.182.0). Lenis 1.2.3 is set up in the site footer."
+}
