@@ -4,7 +4,6 @@
 //
 //   npm run release            -> next patch (1.8.1 -> 1.8.2)
 //   npm run release -- 1.9.0   -> a chosen version
-import { readFileSync } from "node:fs";
 import { createHash } from "node:crypto";
 import { execFileSync } from "node:child_process";
 import { join } from "node:path";
@@ -39,7 +38,9 @@ for (let attempt = 1; attempt <= 12; attempt++) {
     const res = await fetch(`${MAP.cdnBase}@${next}/${f}`, { cache: "no-store" });
     if (!res.ok) return `${f}: HTTP ${res.status}`;
     const got = Buffer.from(await res.arrayBuffer());
-    return sha(got) === sha(readFileSync(join(ROOT, f))) ? null : `${f}: content differs`;
+    // Compare with the committed bytes (LF), not the working copy (CRLF on Windows).
+    const committed = execFileSync("git", ["show", `${next}:${f}`], { cwd: ROOT });
+    return sha(got) === sha(committed) ? null : `${f}: content differs`;
   }));
   const bad = results.filter(Boolean);
   if (!bad.length) {
