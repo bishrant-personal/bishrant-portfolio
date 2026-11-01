@@ -36,7 +36,11 @@ console.log(`\nWaiting for jsDelivr to serve ${files.length} files at @${next} .
 for (let attempt = 1; attempt <= 12; attempt++) {
   const results = await Promise.all(files.map(async (f) => {
     const res = await fetch(`${MAP.cdnBase}@${next}/${f}`, { cache: "no-store" });
-    if (!res.ok) return `${f}: HTTP ${res.status}`;
+    if (!res.ok) {
+      // jsDelivr caches a 404 if it was asked before GitHub had the tag; purge so the next try refetches.
+      await fetch(`${MAP.cdnBase.replace("cdn.jsdelivr.net", "purge.jsdelivr.net")}@${next}/${f}`).catch(() => {});
+      return `${f}: HTTP ${res.status}`;
+    }
     const got = Buffer.from(await res.arrayBuffer());
     // Compare with the committed bytes (LF), not the working copy (CRLF on Windows).
     const committed = execFileSync("git", ["show", `${next}:${f}`], { cwd: ROOT });

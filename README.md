@@ -44,4 +44,4 @@ Releases use `1.8.1`-style tags. The old `v1.0.x` tags are ignored.
 The repo must stay **public**: jsDelivr cannot read private repos (tried 1 Nov 2026, every new tag
 returned 404). It moved from `RoshitShrestha` to `bishrant-personal`. Webflow still loads the old name at
 `1.8.1`, but new tags only resolve under `bishrant-personal`, so the first release switches the prefix.
-`1.8.2` was tagged by mistake while the repo was private and only adds `tools/`.
+`1.8.2` was tagged by mistake while the repo was private. It only adds `tools/`; its site files are the same as `1.8.1`.
